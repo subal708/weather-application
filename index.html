@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Report</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="weather-style.css">
+    <link rel="stylesheet" href="weather-responsive.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="weather-card">
+            <div class="search_theme">
+                <!-- Search Bar -->
+                <div class="search-bar">
+                    <input type="text" id="cityInput" placeholder="Search for a City...">
+                    <button id="unitToggle">°C ⇆ °F</button>
+                    <!-- <select>
+                        <option>°C</option>
+                        <option>°F</option>
+                    </select> -->
+                    <!-- <button>☀️</button> -->
+                    <div id="search-icon" class="searchIcon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                </div>
+                <div id="toggle-button"><i class="fa-solid fa-sun"></i></div>
+            </div>
+
+
+            <!-- Main Weather -->
+            <div class="mainWeather">
+                <img id="weatherIcon" src="https://openweathermap.org/img/wn/02d.png" alt="Weather">
+                <div class="temperature up-animation">28°C</div>
+                <div class="max-min-temp up-animation">
+                    <p>Max : <span id="maxTemp">35°C</span></p>
+                    <p>Min : <span id="minTemp">25°C</span></p>
+                </div>
+                <!--Weather description -->
+                <div class="description up-animation">
+                    <p><i class="fa-brands fa-cloudversify"></i><span id="Wdescription"> Mostly Cloudy</span></p>
+                </div>
+                <hr>
+                <!-- location and Date -->
+                <div class="location-date up-animation">
+                    <!-- city name -->
+                    <div class="city-name"><span id="cityName">Kolkata,</span> <span id="countryCode">IN</span></div>
+                    <div class="date-time"><span id="date">Friday, April 2025</span> at <span id="time">01:20 PM</span></div>
+                </div>
+            </div>
+            <!-- add loader -->
+            <div class="loader hidden"></div>
+
+            <!-- Info Grid -->
+            <div class="info-grid">
+                <div class="infoCard slide-left">
+                    <div class="content1">
+                        <p>🌡️ Feels Like</p>
+                        <h3 id="feelsLike">30 °C</h3>
+                        <!-- <small>Humidity is making it feel warmer</small> -->
+                    </div>
+                    <div class="small-loader smallLoader1 hidden"></div>
+                </div>
+                <div class="infoCard slide-left">
+                    <div class="content2">
+                        <p>🌧️ Precipitation</p>
+                        <h3 id="precipitation">10mm</h3>
+                        <!-- <small>according to current data</small> -->
+                    </div>
+                    <div class="small-loader smallLoader2 hidden"></div>
+
+                </div>
+                <div class="infoCard slide-left">
+                    <div class="content3">
+                        <p>👁️ Visibility</p>
+                        <h3 id="visibility">6 km</h3>
+                        <!-- <small>Cloudy with rain</small> -->
+                    </div>
+                    <div class="small-loader smallLoader3 hidden"></div>
+
+                </div>
+                <div class="infoCard slide-left">
+                    <div class="content4">
+                        <p>💧 Humidity</p>
+                        <h3 id="humidity">68%</h3>
+                        <!-- <small>Dew point is 29° right now</small> -->
+                    </div>
+                    <div class="small-loader smallLoader4 hidden"></div>
+
+                </div>
+            </div>
+        </div>
+        <div class="weather-forecast">
+            <!-- Hourly Forecast -->
+            <div class="card">
+                <h2><i class="fa-regular fa-clock"></i> HOURLY FORECAST</h2>
+                <hr>
+                <div class="scroll-container">
+                    <div class="forecast-item forward-animation">
+                        <span>Now</span>
+                        <span class="temp">28°C</span>
+                        <span id="wIcon">🌧️</span>
+                        <!-- <div class="too small-loader"></div> -->
+                    </div>
+                    <div class="forecast-item forward-animation">
+                        <span>15:00</span>
+                        <span class="temp">28°C</span>
+                        <span id="wIcon">🌧️</span>
+                    </div>
+                    <div class="forecast-item forward-animation">
+                        <span>16:00</span>
+                        <span class="temp">26°C</span>
+                        <span id="wIcon">⛈️</span>
+                    </div>
+                    <div class="forecast-item forward-animation">
+                        <span>17:00</span>
+                        <span class="temp">29°C</span>
+                        <span id="wIcon">🌧️</span>
+                    </div>
+                    <div class="forecast-item forward-animation">
+                        <span>18:00</span>
+                        <span class="temp">32°C</span>
+                        <span id="wIcon">🌤️</span>
+                    </div>
+                    <div class="forecast-item forward-animation">
+                        <span>19:00</span>
+                        <span class="temp">28°C</span>
+                        <span id="wIcon">🌧️</span>
+                    </div>
+                    <div class="forecast-item forward-animation">
+                        <span>Now</span>
+                        <span class="temp">28°C</span>
+                        <span id="wIcon">🌧️</span>
+                    </div>
+                    <div class="forecast-item forward-animation">
+                        <span>15:00</span>
+                        <span class="temp">28°C</span>
+                        <span id="wIcon">🌧️</span>
+                    </div>
+                    <div class="forecast-item forward-animation">
+                        <span>16:00</span>
+                        <span class="temp">26°C</span>
+                        <span id="wIcon">⛈️</span>
+                    </div>
+                    <div class="forecast-item forward-animation">
+                        <span>17:00</span>
+                        <span class="temp">29°C</span>
+                        <span id="wIcon">🌧️</span>
+                    </div>
+                    <div class="forecast-item forward-animation">
+                        <span>18:00</span>
+                        <span class="temp">32°C</span>
+                        <span id="wIcon">🌤️</span>
+                    </div>
+                    <div class="forecast-item forward-animation">
+                        <span>19:00</span>
+                        <span class="temp">28°C</span>
+                        <span id="wIcon">🌧️</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10-Day Forecast -->
+            <div class="card">
+                <h2><i class="fa-solid fa-calendar-days"></i> 10-DAY FORECAST</h2>
+                <hr>
+                <div class="scroll-container">
+                    <div class="forecast-item forward-animation">
+                        <span class="day">Today</span>
+                        <span class="date">16/02</span>
+                        <span class="temp">28°C</span>
+                        <span class="WIcon">🌧️</span>
+                        <!-- <div class="too small-loader"></div> -->
+                    </div>
+                    <div class="forecast-item forward-animation">
+                        <span>Thu</span>
+                        <span>17/02</span>
+                        <span class="temp">28°C</span>
+                        <span id="wIcon">🌧️</span>
+                    </div>
+                    <div class="forecast-item forward-animation">
+                        <span>Fri</span>
+                        <span>18/02</span>
+                        <span class="temp">26°C</span>
+                        <span id="wIcon">⛈️</span>
+                    </div>
+                    <div class="forecast-item forward-animation">
+                        <span>Sat</span>
+                        <span>19/02</span>
+                        <span class="temp">29°C</span>
+                        <span id="wIcon">🌧️</span>
+                    </div>
+                    <div class="forecast-item forward-animation">
+                        <span>Sun</span>
+                        <span>20/02</span>
+                        <span class="temp">32°C</span>
+                        <span id="wIcon">🌤️</span>
+                    </div>
+                    <div class="forecast-item forward-animation">
+                        <span>Mon</span>
+                        <span>21/02</span>
+                        <span class="temp">28°C</span>
+                        <span id="wIcon">🌧️</span>
+                    </div>
+                    <div class="forecast-item forward-animation">
+                        <span>Today</span>
+                        <span>16/02</span>
+                        <span class="temp">28°C</span>
+                        <span id="wIcon">🌧️</span>
+                    </div>
+                    <div class="forecast-item forward-animation">
+                        <span>Sun</span>
+                        <span>20/02</span>
+                        <span class="temp">32°C</span>
+                        <span id="wIcon">🌤️</span>
+                    </div>
+                    <div class="forecast-item forward-animation">
+                        <span>Mon</span>
+                        <span>21/02</span>
+                        <span class="temp">28°C</span>
+                        <span id="wIcon">🌧️</span>
+                    </div>
+                    <div class="forecast-item forward-animation">
+                        <span>Today</span>
+                        <span>16/02</span>
+                        <span class="temp">28°C</span>
+                        <span id="wIcon">🌧️</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sunrise, Sunset & Wind -->
+            <div class="grid">
+                <div class="card sun-block">
+                    <div class="sun up-animation">
+                        <span>
+                            <i class="fa-solid fa-sun"></i>
+                            <p><span id="SRValue">06:30 AM</span>Sunrise</p>
+                        </span>
+                        <br>
+                        <span>
+                            <i class="fa-regular fa-sun"></i>
+                            <p><span id="SSValue">06:30 PM</span>Sunset</p>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- wind block -->
+                <div class="card">
+                    <h2><span><i class="fa-solid fa-wind"></i></span> WIND</h2>
+                    <div class="wind-block">
+                        <div class="details up-animation">
+                            <span>Speed : <span id="windSpeed">8.5</span> km/h</span>
+                            <br>
+                            <span>Gusts : <span id="gusts">1.6</span> km/h</span>
+                        </div>
+                        <div class="compass"><img src="Compass-Image.jpg"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="weather-logic.js"></script>
+</body>
+
+</html>

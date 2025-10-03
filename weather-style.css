@@ -1,0 +1,433 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    /* box-sizing: border-box; */
+}
+
+:root {
+    --bg-color:  rgb(40, 40, 40);
+    --text-color: #fff;
+    --card-bg: #08090986;
+    --main-card-bg: #0e1b28;
+}
+
+.light-theme {
+    --bg-color: #f0f0f0;
+    /* --bg-color:  rgba(52, 49, 49, 0.483); */
+    --text-color: #000;
+    /* --card-bg: rgba(0, 0, 0, 0.05); */
+    /* --card-bg: #00000059; */
+    --card-bg: #ffff;
+    --main-card-bg: rgba(12, 186, 234, 0.983);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    /* height: 100vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding: 10px;
+    /* padding-right: 20px; */
+}
+
+/* main-container */
+.main-container {
+    /* background: rgba(0, 0, 0, 0.531); */
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.weather-card {
+    background: var(--main-card-bg);
+    border-radius: 20px;
+    padding: 15px;
+    width: 35%;
+    color: var(--text-color);
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* search_theme */
+.search_theme {
+    display: flex;
+    justify-content: space-between;
+    /* background-color: black; */
+    height: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-color);
+    /* background-color: white; */
+    border-radius: 30px;
+    padding: 5px 10px;
+    width: 80%;
+    /* margin-bottom: 20px; */
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    background: transparent;
+    text-transform: capitalize;
+    color: var(--text-color);
+    font-size: 15px;
+    flex: 1;
+}
+
+.search-bar input::placeholder {
+    color: var(--text-color);
+}
+
+/* .search-bar select {
+    border: none;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+} */
+
+/* unitToggle */
+#unitToggle {
+    border: 1px solid var(--text-color);
+    padding: 0.3rem;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 12px;
+    margin-right: 6px;
+}
+
+#search-icon {
+    font-size: 20px;
+    color: #949494;
+    margin-left: 3px;
+    cursor: pointer;
+}
+
+#toggle-button {
+    /* padding: 6px 12px; */
+    border: none;
+    width: 10%;
+    font-size: 1.6rem;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-block;
+    justify-content: center;
+    align-self: center;
+    color: rgb(255, 149, 0);
+    font-weight: bold;
+}
+
+/* weather Icon */
+#weatherIcon {
+    height: 100px;
+    width: 100px;
+}
+
+.temperature {
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+.max-min-temp {
+    display: flex;
+    justify-content: space-around;
+}
+
+.description {
+    margin: 1rem;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.location-date {
+    margin-top: 5px;
+}
+
+/* city-name */
+.city-name {
+    font-size: 1.6rem;
+    color: var(--text-color);
+}
+
+.date-time {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin-bottom: 5rem;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.infoCard {
+    background: var(--bg-color);
+    border-radius: 15px;
+    padding: 15px;
+    text-align: left;
+    font-size: 14px;
+    border: 1.3px solid var(--text-color);
+}
+
+.info-card h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.info-card small {
+    font-size: 12px;
+    color: var(--text-color);
+}
+
+/* weather-forecast */
+
+.weather-forecast {
+    background: var(--main-card-bg);
+    border-radius: 20px;
+    padding: 15px;
+    width: 60%;
+    color: var(--text-color);
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--text-color);
+    /* border: 1.5px solid var(--text-color); */
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #666666 #2222223f;
+}
+
+.scroll-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    /* background: #666; */
+    background: var(--main-card-bg);
+    border-radius: 4px;
+}
+
+.forecast-item {
+    flex: 0 0 auto;
+    width: 80px;
+    margin-right: 12px;
+    background: var(--bg-color);
+    border-radius: 12px;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 1.2px solid var(--text-color);
+}
+
+.forecast-item span {
+    display: block;
+}
+
+.forecast-item .temp {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 6px 0;
+}
+
+#wIcon{
+    font-size: 1.25rem;
+}
+
+/* Grid section */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.card span {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.sun-block {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.sun i {
+    font-size: 2rem;
+}
+
+.compass img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+/* wind-block */
+.wind-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* hover effects */
+#unitToggle:hover {
+    transition: 0.3s ease-in-out;
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+#search-icon:hover {
+    /* transform: translateY(-3px); */
+    /* font-size: 22px; */
+    transition: 0.3s ease-in-out;
+    color: var(--text-color);
+}
+
+#toggle-button:hover {
+    font-size: 1.8rem;
+    transition: 0.3s ease-in-out;
+    color: var(--text-color)
+}
+
+/* Entrance Animation bottom to up */
+.up-animation {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.30s ease-out forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Appear from -z (depth) */
+.forward-animation span {
+    opacity: 0;
+    transform: scale(0.7) translateZ(-200px);
+    filter: blur(6px);
+    animation: appearFromZ 0.30s ease-in forwards;
+}
+
+@keyframes appearFromZ {
+    to {
+        opacity: 1;
+        transform: scale(1) translateZ(0);
+        filter: blur(0);
+    }
+}
+
+/* Slide in from left */
+.slide-left p,
+h3 {
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: slideInLeft 0.30s ease-out forwards;
+}
+
+@keyframes slideInLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* loader styling */
+.loader {
+    /* display: none; */
+    width: 4rem;
+    height: 4rem;
+    border: 8px solid #f3f3f3;
+    /* Light border */
+    border-top: 8px solid #3498db;
+    /* Blue spinning part */
+    border-radius: 50%;
+    /* Circular shape */
+    animation: spin 1s linear infinite;
+    margin: 160px auto;
+}
+
+/* small loader styling */
+.small-loader {
+    /* display: none; */
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 3px solid #f3f3f3;
+    /* Light border */
+    border-top: 3px solid #3498db;
+    /* Blue spinning part */
+    border-radius: 50%;
+    /* Circular shape */
+    animation: spin 1s linear infinite;
+    margin: 14px auto;
+}
+
+/* too-small loader styling */
+.tooSmallLoader {
+    /* display: none; */
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 3px solid #f3f3f3;
+    /* Light border */
+    border-top: 3px solid #3498db;
+    /* Blue spinning part */
+    border-radius: 50%;
+    /* Circular shape */
+    animation: spin 1s linear infinite;
+    margin: 1px auto;
+}
+/* Spin Animation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* hidden capacity */
+.hidden{
+    display: none;
+}
