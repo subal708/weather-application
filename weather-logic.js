@@ -19,73 +19,6 @@ let weatherData2 = null;
 // unit toggle
 let currentUnit = "C"; // Default Celsius
 
-// Modern weather icons using Meteocons (animated SVG)
-const AnimatedweatherIcons = {
-
-  200: "thunderstorms-rain.svg",
-  201: "thunderstorms-overcast-rain.svg",
-  202: "thunderstorms-overcast-rain.svg",
-  210: "thunderstorms.svg",
-  211: "thunderstorms.svg",
-  212: "thunderstorms-extreme.svg",
-  221: "thunderstorms.svg",
-  230: "thunderstorms.svg",
-  231: "thunderstorms-day-extreme.svg",
-  232: "thunderstorms-extreme.svg",
-
-  300: "drizzle.svg",
-  301: "drizzle.svg",
-  302: "overcast-rain.svg",
-  310: "drizzle.svg",
-  311: "drizzle.svg",
-  312: "extreme-drizzle.svg",
-  313: "overcast-rain.svg",
-  314: "extreme-drizzle.svg",
-  321: "overcast-rain.svg",
-
-  500: "rain.svg",           // changed from rainy.svg
-  501: "overcast-rain.svg",
-  502: "partly-cloudy-day-rain.svg",
-  503: "rain-heavy.svg",     // heavier rain
-  504: "rain-heavy.svg",
-  511: "sleet.svg",      // changed from snowy-rain.svg
-  520: "partly-cloudy-day-rain.svg",
-  521: "partly-cloudy-day-rain.svg",
-  522: "rain-heavy.svg",
-  531: "partly-cloudy-day-rain.svg",
-
-  600: "snow.svg",
-  601: "snow.svg",
-  602: "snow-heavy.svg",
-  611: "overcast-day-sleet.svg",
-  612: "overcast-day-sleet.svg",
-  613: "snow.svg",
-  615: "sleet.svg",
-  616: "sleet.svg",
-  620: "overcast-sleet.svg",
-  621: "extreme-day-snow.svg",
-  622: "extreme-snow.svg",
-
-  701: "mist.svg",
-  711: "smoke.svg",
-  721: "haze.svg",
-  731: "dust.svg",
-  741: "fog.svg",
-  751: "dust.svg",
-  761: "dust.svg",
-  762: "hurricane.svg",
-  771: "wind.svg",
-  781: "tornado.svg",
-
-  800: "clear-day.svg",
-
-  801: "partly-cloudy-day.svg",
-  802: "cloudy.svg",
-  803: "overcast.svg",
-  804: "extreme.svg",
-};
-
-
 // access elements
 const temperature = document.querySelector(".temperature");
 const searchIcon = document.querySelector(".searchIcon");
@@ -114,14 +47,6 @@ const description = document.getElementById("Wdescription"),
     SRValue = document.getElementById("SRValue"),
     SSValue = document.getElementById("SSValue");
 
-// for default loading action
-window.addEventListener("load", () => {
-    document.getElementById("cityInput").value = "Kolkata"; // Set default city
-    getWeather(); // Fetch weather for Kolkata
-    document.getElementById("cityInput").value = "";
-});
-
-
 // search Icon
 searchIcon.addEventListener("click", () => {
     getWeather();
@@ -137,7 +62,7 @@ document.getElementById("cityInput").addEventListener("keyup", function (event) 
 // Function to fetch weather from OpenWeatherMap API
 async function getWeather() {
     const city = document.getElementById("cityInput").value;
-    const apiKey = "2695e2329926772d89057c9808a3bcb9"; // API key
+    const apiKey = "2695e2329926772d89057c9808a3bcb9"; // Replace with your OpenWeatherMap API key
 
     if (city === "") {
         alert("Please enter a city name!");
@@ -173,12 +98,8 @@ async function getWeather() {
         countryCode.innerText = `${data.sys.country}`;
         // countryCode.innerText = `${data.sys.country}`;
 
-        document.getElementById("weatherIcon").src =`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-
-        //anumated icon id update
-        // const iconFile = AnimatedweatherIcons[data.weather[0].id] || "clear-day.svg";
-        // animated icon update
-        // document.getElementById("weatherIcon").src =`https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/${iconFile}`;
+        document.getElementById("weatherIcon").src =
+            `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 
         description.innerText = ` ${data.weather[0].description}`;
         humidity.innerText = `${data.main.humidity}%`;
@@ -196,7 +117,7 @@ async function getWeather() {
         weatherData2 = data2;
 
         precipitation.innerText = `${data2.daily.precipitation_sum[0]}mm`;
-        visibility.innerText = `${Math.round((data2.daily.visibility_mean[0]) / 1000)}km`;
+        visibility.innerText = `${Math.round((data2.daily.visibility_mean[0]) / 1000) - 10}km`;
 
         tempUpdation();
 
@@ -221,8 +142,8 @@ function tempUpdation() {
     temperature.innerText = `${Math.round(convertTemp(weatherData.main.temp, currentUnit))}°${currentUnit}`; //math.round for round figure
     feelsLike.innerText = `${Math.round(convertTemp(weatherData.main.feels_like, currentUnit))}°${currentUnit}`;
     // max-min temp update
-    maxTemp.innerText = `${Math.round(convertTemp(weatherData2.daily.temperature_2m_max[0], currentUnit)*100)/100}°${currentUnit}`;
-    minTemp.innerText = `${Math.round(convertTemp(weatherData2.daily.temperature_2m_min[0], currentUnit)*100)/100}°${currentUnit}`;
+    maxTemp.innerText = `${convertTemp(((weatherData2.daily.temperature_2m_max[0])*10)/10, currentUnit)}°${currentUnit}`;
+    minTemp.innerText = `${convertTemp(((weatherData2.daily.temperature_2m_min[0])*10)/10, currentUnit)}°${currentUnit}`;
     
     updateHourlyForecast(weatherData2.hourly);
     updateDailyForecast(weatherData2.daily);
@@ -239,20 +160,9 @@ function updateClock() {
     minutes = minutes < 10 ? "0" + minutes : minutes;  //If minutes = 7, it changes to "07"
     document.getElementById("time").innerText = `${hours}:${minutes} ${ampm}`; //Create the final time string:
 
-    // Date: "Friday, 4 October 2025"
-    const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const months = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-    ];
-
-    const weekday = weekdays[now.getDay()];
-    const day = now.getDate();
-    const month = months[now.getMonth()];
-    const year = now.getFullYear();
-
-    document.getElementById("date").innerText = `${weekday}, ${day} ${month} ${year}`;
-
+    // Format date
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById("date").innerText = now.toLocaleDateString("en-US", options);
 }
 
 // Update clock every second
@@ -356,7 +266,7 @@ function updateHourlyForecast(hourly) {
     // const hoursToShow = (23-hours); // Show next remaining hours today
     for (let i = hours; i <= (hours + hoursToShow); i++) {
         const time = formatTime(hourly.time[i]);
-        // console.log(time);
+        console.log(time);
         const temp = Math.round(convertTemp(hourly.temperature_2m[i], currentUnit));
         const icon = weatherIcons[hourly.weather_code[i]] || "❓";
 
@@ -397,13 +307,6 @@ function updateDailyForecast(daily) {
 // Convert Celsius ⇆ Fahrenheit
 function convertTemp(temp, unit) {
     return unit === "C" ? temp : (temp * 9) / 5 + 32;
-    // if(unit === "C"){
-    //     return temp;
-    // }
-    // else{
-    //     calculatedTemp = (temp*9)/5+32;
-    //     return (calculatedTemp*10)/10;
-    // }
 }
 
 // Toggle Button Event
@@ -411,5 +314,7 @@ document.getElementById("unitToggle").addEventListener("click", () => {
     currentUnit = currentUnit === "C" ? "F" : "C";
     // document.getElementById("unit-toggle").textContent =
     //   currentUnit === "C" ? "Switch to °F" : "Switch to °C";
+    //   renderWeather();
+    console.log(currentUnit);
     tempUpdation();
 });
