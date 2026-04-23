@@ -157,6 +157,11 @@
 
 @media (max-width: 745px) {
 
+    body{
+        padding: 0;
+        width: 100%;
+    }
+
     /* main-container */
     .main-container {
         display: flex;
@@ -164,19 +169,28 @@
         justify-content: center;
         align-items: center;
         gap: 0px;
+        width: 100%;
     }
 
     .weather-card {
-        padding: 15px;
+        padding: 20px;
         border-bottom-left-radius: 0px;
+        border-top-left-radius: 0px;
         border-bottom-right-radius: 0px;
+        border-top-right-radius: 0px;
         width: 95%;
     }
 
     .weather-forecast {
         border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
         border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        padding: 20px;
         width: 95%;
+    }
+    .search-bar {
+        width: 85%;
     }
 }
 
